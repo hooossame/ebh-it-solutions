@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EBH IT Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #011b33;
+      --accent: #354147;
+      --background: #ffffff;
+      --muted: #f6f4f0;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: var(--background);
+      color: var(--primary);
+    }
+    header {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: var(--accent);
+    }
+    .section {
+      padding: 3rem 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .service-box {
+      flex: 1 1 280px;
+      background: var(--muted);
+      padding: 1.5rem;
+      border-radius: 10px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+    .service-box:hover {
+      background: #e2e2e2;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    input, textarea {
+      padding: 0.8rem 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    button {
+      padding: 0.8rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.9rem;
+      background: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>EBH IT Solutions</h1>
+    <p>Une seule plateforme pour tous vos besoins informatiques</p>
+  </header>
+
+  <section class="section">
+    <h2>Nos Services</h2>
+    <div class="services">
+      <div class="service-box">Infrastructures IT</div>
+      <div class="service-box">Support & Maintenance</div>
+      <div class="service-box">Cybersécurité</div>
+      <div class="service-box">Cloud & Hébergement</div>
+      <div class="service-box">Intelligence Artificielle</div>
+      <div class="service-box">Transformation Digitale</div>
+      <div class="service-box">Développement Web & Mobile</div>
+      <div class="service-box">Vente de Matériel</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Site en Maintenance</h2>
+    <p style="text-align: center; max-width: 700px; margin: 0 auto 1.5rem auto;">Nous finalisons une expérience moderne pour vous proposer un service fiable et innovant. Pour toute demande, contactez-nous ci-dessous.</p>
+    <form>
+      <input type="text" placeholder="Votre nom" required />
+      <input type="email" placeholder="Votre email" required />
+      <textarea rows="5" placeholder="Votre message ou besoin"></textarea>
+      <button type="submit">Envoyer la demande</button>
+    </form>
+  </section>
+
+  <footer>
+    &copy; 2025 EBH IT Solutions. Tous droits réservés.
+  </footer>
+</body>
+</html>
