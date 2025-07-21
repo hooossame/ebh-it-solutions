@@ -1,312 +1,246 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>EBH IT Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --primary: #011b33;
-      --accent: #354147;
-      --background: #f6f4f0;
-      --white: #ffffff;
-      --shadow: rgba(0,0,0,0.08);
-      --green-whatsapp: #25d366;
-      --green-hover: #1ebe57;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBH IT Solutions – Maintenance</title>
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', sans-serif;
-    }
+<style>
+  :root {
+    --black: #000000;
+    --white: #ffffff;
+    --transition: 0.3s ease;
+  }
 
-    body {
-      background-color: var(--background);
-      color: var(--primary);
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: background-color var(--transition), color var(--transition);
+  }
 
-    header {
-      background: var(--white);
-      padding: 4rem 1.5rem 2rem;
-      text-align: center;
-      box-shadow: 0 2px 8px var(--shadow);
-    }
+  body.dark {
+    background-color: var(--black);
+    color: var(--white);
+  }
 
-    header h1 {
-      font-weight: 800;
-      font-size: 2.8rem;
-      margin-bottom: 0.4rem;
-      color: var(--primary);
-      letter-spacing: 1.5px;
-    }
+  .container {
+    max-width: 600px;
+    padding: 2rem;
+  }
 
-    header p {
-      color: var(--accent);
-      font-weight: 600;
-      font-size: 1.2rem;
-      max-width: 480px;
-      margin: 0 auto;
-    }
+  h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 0.05em;
+  }
 
-    main {
-      flex-grow: 1;
-      padding: 3rem 1.5rem 5rem;
-      max-width: 1100px;
-      margin: 0 auto;
-      width: 100%;
-    }
+  .message-container {
+    margin: 2rem 0;
+    min-height: 120px;
+    position: relative;
+  }
 
-    section {
-      margin-bottom: 4rem;
-    }
+  .message {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
 
-    h2 {
-      font-weight: 700;
-      font-size: 2.2rem;
-      color: var(--primary);
-      margin-bottom: 2rem;
-      text-align: center;
-      position: relative;
-    }
+  .message.visible {
+    opacity: 1;
+  }
 
-    h2::after {
-      content: "";
-      display: block;
-      width: 70px;
-      height: 4px;
-      background: var(--primary);
-      margin: 0.5rem auto 0;
-      border-radius: 2px;
-      opacity: 0.6;
-    }
+  .whatsapp-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    background: var(--black);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: all var(--transition);
+    border: 1px solid var(--black);
+  }
 
-    .services {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.8rem;
-    }
+  body.dark .whatsapp-btn {
+    background: var(--white);
+    color: var(--black);
+  }
 
-    .service-card {
-      background: var(--white);
-      padding: 1.8rem 1.4rem;
-      border-radius: 12px;
-      box-shadow: 0 2px 12px var(--shadow);
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 1.1rem;
-      text-align: center;
-      cursor: default;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+  .whatsapp-btn:hover {
+    transform: translateY(-2px);
+  }
 
-    .service-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 20px var(--shadow);
-    }
+  footer {
+    margin-top: 3rem;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
 
-    .maintenance-text {
-      max-width: 600px;
-      margin: 0 auto 2rem;
-      font-size: 1.1rem;
-      color: var(--accent);
-      text-align: center;
-      line-height: 1.5;
-    }
+  .theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: all var(--transition);
+  }
 
-    form {
-      max-width: 480px;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
+  .theme-toggle:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
 
-    input, textarea {
-      padding: 1rem 1.2rem;
-      border-radius: 8px;
-      border: 1.5px solid #ccc;
-      font-size: 1rem;
-      font-family: 'Inter', sans-serif;
-      transition: border-color 0.3s ease;
-      resize: vertical;
-    }
+  body.dark .theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
 
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: var(--primary);
-      box-shadow: 0 0 6px var(--primary);
-    }
+  /* Style spécifique pour l'arabe */
+  .message[lang="ar"] {
+    direction: rtl;
+    font-family: Arial, sans-serif;
+  }
 
-    button {
-      background: var(--primary);
-      color: var(--white);
-      border: none;
-      padding: 1rem;
-      border-radius: 8px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
+  @media (max-width: 600px) {
+    h1 {
+      font-size: 2rem;
     }
-
-    button:hover {
-      background: var(--accent);
+    .container {
+      padding: 1.5rem;
     }
-
-    footer {
-      background: var(--white);
-      text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: 0.9rem;
-      color: var(--accent);
-      box-shadow: 0 -2px 8px var(--shadow);
-      user-select: none;
-    }
-
-    /* WhatsApp Floating Button */
-    .whatsapp-container {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      z-index: 1000;
-      cursor: pointer;
-      user-select: none;
-      text-decoration: none;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .whatsapp-button {
-      background-color: var(--green-whatsapp);
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.15);
-      transition: background-color 0.3s ease;
-      animation: dance 2s ease-in-out infinite;
-      flex-shrink: 0;
-    }
-
-    .whatsapp-button:hover {
-      background-color: var(--green-hover);
-    }
-
-    .whatsapp-button svg {
-      fill: white;
-      width: 28px;
-      height: 28px;
-    }
-
-    @keyframes dance {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(15deg); }
-      50% { transform: rotate(0deg); }
-      75% { transform: rotate(-15deg); }
-    }
-
-    .whatsapp-label {
-      background: var(--green-whatsapp);
-      color: white;
-      padding: 0.6rem 1rem;
-      border-radius: 20px;
-      font-weight: 600;
-      font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.5);
-      animation: pulse 2.5s infinite;
-      user-select: none;
-      white-space: nowrap;
-    }
-
-    @keyframes pulse {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(1.05);
-        opacity: 0.85;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      h2 {
-        font-size: 1.7rem;
-      }
-      .services {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-      .whatsapp-label {
-        display: none; /* Cache label sur mobile */
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
-  <header>
-    <h1>EBH IT Solutions</h1>
-    <p>Une plateforme unique pour gérer tous vos besoins informatiques avec fiabilité et innovation.</p>
-  </header>
 
-  <main>
-    <section>
-      <h2>Nos Services</h2>
-      <div class="services">
-        <div class="service-card">Infrastructures IT</div>
-        <div class="service-card">Support & Maintenance</div>
-        <div class="service-card">Cybersécurité</div>
-        <div class="service-card">Cloud & Hébergement</div>
-        <div class="service-card">Intelligence Artificielle</div>
-        <div class="service-card">Transformation Digitale</div>
-        <div class="service-card">Développement Web & Mobile</div>
-        <div class="service-card">Vente de Matériel</div>
-      </div>
-    </section>
+<div class="theme-toggle" id="themeToggle">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path id="moon" d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+    <circle id="sun" cx="12" cy="12" r="5" style="display: none;"/>
+    <line id="sun-ray-1" x1="12" y1="1" x2="12" y2="3" style="display: none;"/>
+    <line id="sun-ray-2" x1="12" y1="21" x2="12" y2="23" style="display: none;"/>
+    <line id="sun-ray-3" x1="4.22" y1="4.22" x2="5.64" y2="5.64" style="display: none;"/>
+    <line id="sun-ray-4" x1="18.36" y1="18.36" x2="19.78" y2="19.78" style="display: none;"/>
+    <line id="sun-ray-5" x1="1" y1="12" x2="3" y2="12" style="display: none;"/>
+    <line id="sun-ray-6" x1="21" y1="12" x2="23" y2="12" style="display: none;"/>
+    <line id="sun-ray-7" x1="4.22" y1="19.78" x2="5.64" y2="18.36" style="display: none;"/>
+    <line id="sun-ray-8" x1="18.36" y1="5.64" x2="19.78" y2="4.22" style="display: none;"/>
+  </svg>
+</div>
 
-    <section>
-      <h2>Site en Maintenance</h2>
-      <p class="maintenance-text">
-        Nous préparons une expérience moderne et intuitive pour vous proposer des solutions IT fiables et innovantes.
-        Pour toute demande, n'hésitez pas à nous contacter via le formulaire ci-dessous.
-      </p>
-      <form>
-        <input type="text" placeholder="Votre nom" required />
-        <input type="email" placeholder="Votre email" required />
-        <textarea rows="5" placeholder="Votre message ou besoin"></textarea>
-        <button type="submit">Envoyer la demande</button>
-      </form>
-    </section>
-  </main>
+<div class="container">
+  <h1>EBH IT SOLUTIONS</h1>
+  
+  <div class="message-container" id="messageContainer">
+    <div class="message visible" id="message1"></div>
+    <div class="message" id="message2"></div>
+  </div>
+
+  <a href="https://api.whatsapp.com/send?phone=212708908907" target="_blank" class="whatsapp-btn" id="whatsappBtn">
+    Contact WhatsApp
+  </a>
 
   <footer>
-    &copy; 2025 EBH IT Solutions. Tous droits réservés.
+    © 2025 EBH IT Solutions
   </footer>
+</div>
 
-  <!-- WhatsApp floating button -->
-  <a href="https://api.whatsapp.com/send?phone=212708908907" target="_blank" rel="noopener" class="whatsapp-container" aria-label="Contactez-nous sur WhatsApp">
-    <div class="whatsapp-button" aria-hidden="true">
-      <!-- WhatsApp SVG icon -->
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-        <path d="M20.52 3.48A11.9 11.9 0 0012 0C5.37 0 0 5.37 0 12c0 2.1.56 4.13 1.62 5.9L0 24l6.36-1.65a11.9 11.9 0 005.64 1.44c6.63 0 12-5.37 12-12 0-3.2-1.25-6.22-3.48-8.31zM12 21.8a9.6 9.6 0 01-4.9-1.4l-.35-.22-3.77 1 1-3.67-.23-.36a9.6 9.6 0 01-1.47-5.07c0-5.3 4.3-9.6 9.6-9.6s9.6 4.3 9.6 9.6-4.3 9.6-9.6 9.6zm5.27-7.4c-.29-.14-1.7-.83-1.96-.93-.26-.1-.45-.14-.64.14s-.73.93-.9 1.12c-.17.18-.33.2-.62.07-.29-.14-1.22-.45-2.32-1.42-.86-.77-1.44-1.72-1.61-2-.17-.28-.02-.43.13-.57.14-.14.29-.33.43-.5.14-.17.19-.28.29-.47.1-.18.05-.34-.02-.48-.07-.14-.63-1.53-.86-2.09-.23-.56-.47-.49-.64-.5-.16-.01-.35-.01-.54-.01s-.48.07-.73.34c-.25.27-.96.94-.96 2.3 0 1.36.98 2.68 1.12 2.86.14.17 1.93 2.94 4.68 4.12.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.7-.69 1.94-1.36.24-.67.24-1.25.17-1.36-.07-.11-.26-.17-.55-.3z"/>
-      </svg>
-    </div>
-    <div class="whatsapp-label">Clique ici pour nous contacter sur WhatsApp</div>
-  </a>
+<script>
+  const messages = [
+    {
+      text: "Notre site est en maintenance. Une nouvelle version arrive bientôt.",
+      btn: "Contactez-nous",
+      lang: "fr"
+    },
+    {
+      text: "Our website is under maintenance. A new version is coming soon.",
+      btn: "Contact us",
+      lang: "en"
+    },
+    {
+      text: "موقعنا قيد الصيانة. نسخة جديدة قريباً.",
+      btn: "اتصل بنا",
+      lang: "ar"
+    },
+    {
+      text: "Asmel-nneɣ yella deg uselkim. Lqem amaynu a d-yased s tmerna.",
+      btn: "Awi-d awal",
+      lang: "zgh" // Code pour tamazight
+    }
+  ];
+
+  let currentIndex = 0;
+  const message1 = document.getElementById('message1');
+  const message2 = document.getElementById('message2');
+  const whatsappBtn = document.getElementById('whatsappBtn');
+  const themeToggle = document.getElementById('themeToggle');
+
+  function changeMessage() {
+    const nextIndex = (currentIndex + 1) % messages.length;
+    const currentMessage = currentIndex % 2 === 0 ? message1 : message2;
+    const nextMessage = currentIndex % 2 === 0 ? message2 : message1;
+    
+    nextMessage.textContent = messages[nextIndex].text;
+    nextMessage.setAttribute('lang', messages[nextIndex].lang);
+    whatsappBtn.textContent = messages[nextIndex].btn;
+    
+    currentMessage.classList.remove('visible');
+    nextMessage.classList.add('visible');
+    
+    currentIndex = nextIndex;
+  }
+
+  function toggleTheme() {
+    document.body.classList.toggle('dark');
+    const isDark = document.body.classList.contains('dark');
+    
+    // Toggle sun/moon icon
+    if (isDark) {
+      document.getElementById('moon').style.display = 'none';
+      document.getElementById('sun').style.display = 'block';
+      document.querySelectorAll('[id^="sun-ray"]').forEach(el => {
+        el.style.display = 'block';
+      });
+    } else {
+      document.getElementById('moon').style.display = 'block';
+      document.getElementById('sun').style.display = 'none';
+      document.querySelectorAll('[id^="sun-ray"]').forEach(el => {
+        el.style.display = 'none';
+      });
+    }
+  }
+
+  // Initialize
+  message1.textContent = messages[0].text;
+  message1.setAttribute('lang', messages[0].lang);
+  whatsappBtn.textContent = messages[0].btn;
+
+  // Change message every 5 seconds
+  setInterval(changeMessage, 5000);
+
+  // Theme toggle
+  themeToggle.addEventListener('click', toggleTheme);
+
+  // Set initial theme based on preference
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.body.classList.add('dark');
+    toggleTheme(); // This will set the correct icon
+  }
+</script>
+
 </body>
 </html>
