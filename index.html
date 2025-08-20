@@ -4,410 +4,162 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maintenance - EBH Technologies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         
         body {
-            background: linear-gradient(135deg, #000000, #222222);
+            background-color: #000;
             color: #fff;
-            line-height: 1.6;
-            overflow-x: hidden;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 20px;
-            filter: grayscale(100%);
+            padding: 40px 20px;
+            line-height: 1.6;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 600px;
             width: 100%;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.7);
-            border-radius: 15px;
-            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            padding: 60px 40px;
             border: 1px solid #333;
+            border-radius: 2px;
+            position: relative;
         }
         
         .logo {
-            margin-bottom: 30px;
-        }
-        
-        .logo h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #fff;
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            color: #fff;
         }
         
         .maintenance-icon {
-            font-size: 5rem;
-            margin-bottom: 20px;
+            font-size: 48px;
+            margin-bottom: 40px;
             color: #fff;
-            animation: pulse 2s infinite;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
         }
         
         h2 {
-            font-size: 2.2rem;
+            font-size: 24px;
+            font-weight: 500;
             margin-bottom: 20px;
             color: #fff;
-            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         
         p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-            color: #ccc;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .game-section {
-            margin: 40px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            border: 1px solid #333;
-        }
-        
-        .game-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-        
-        .impossible-game {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-        
-        .game-instructions {
-            margin-bottom: 20px;
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 40px;
             color: #aaa;
-            font-style: italic;
+            line-height: 1.7;
         }
         
-        .color-options {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .color-option {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s;
-            border: 2px solid #333;
-        }
-        
-        .color-option:hover {
-            transform: scale(1.1);
-        }
-        
-        .game-board {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 5px;
-            margin: 20px auto;
-            max-width: 300px;
-        }
-        
-        .game-cell {
-            width: 70px;
-            height: 70px;
-            background: #111;
-            border: 2px solid #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-        
-        .game-cell:hover {
-            background: #222;
-        }
-        
-        .controls {
-            margin-top: 20px;
-        }
-        
-        .game-btn {
-            padding: 10px 20px;
-            background: #111;
-            color: white;
-            border: 1px solid #333;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin: 0 5px;
-        }
-        
-        .game-btn:hover {
-            background: #222;
-        }
-        
-        .game-status {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #fff;
-            min-height: 30px;
-        }
-        
-        .whatsapp-contact {
-            margin-top: 40px;
+        .divider {
+            height: 1px;
+            width: 60px;
+            background: #fff;
+            margin: 40px auto;
+            opacity: 0.3;
         }
         
         .whatsapp-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 15px 30px;
-            background: #25D366;
-            color: white;
+            padding: 14px 28px;
+            background: transparent;
+            color: #fff;
             text-decoration: none;
-            border-radius: 30px;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid #fff;
+            border-radius: 0;
+            font-weight: 400;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.2s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            background: #fff;
+            color: #000;
         }
         
         .whatsapp-btn i {
             margin-right: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .whatsapp-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-            background: #20bd5f;
-        }
-        
-        .whatsapp-note {
-            margin-top: 15px;
-            font-size: 1rem;
-            color: #999;
+            font-size: 16px;
         }
         
         footer {
-            margin-top: 50px;
+            margin-top: 60px;
+            font-size: 12px;
             color: #666;
-            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
         
+        /* Animation subtile */
+        @keyframes fade {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        .maintenance-icon {
+            animation: fade 3s infinite ease-in-out;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
             .container {
-                padding: 20px;
-            }
-            
-            .logo h1 {
-                font-size: 2rem;
+                padding: 40px 30px;
+                border: none;
             }
             
             h2 {
-                font-size: 1.8rem;
+                font-size: 20px;
             }
             
             p {
-                font-size: 1rem;
+                font-size: 15px;
             }
             
-            .game-cell {
-                width: 60px;
-                height: 60px;
-            }
-            
-            .color-option {
-                width: 40px;
-                height: 40px;
+            .logo {
+                font-size: 16px;
+                margin-bottom: 40px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="logo">
-            <h1>EBH Technologies</h1>
+        <div class="logo">EBH Technologies</div>
+        
+        <div class="maintenance-icon">
+            <i class="fas fa-tools"></i>
         </div>
         
-        <i class="fas fa-tools maintenance-icon"></i>
+        <h2>Maintenance en cours</h2>
+        <p>Notre site est actuellement en maintenance. Nous travaillons pour améliorer votre expérience et serons de retour très bientôt.</p>
         
-        <h2>Site en maintenance</h2>
-        <p>Nous effectuons actuellement des travaux de maintenance sur notre site. Veuillez nous excuser pour la gêne occasionnée. Notre équipe travaille dur pour restaurer le service au plus vite.</p>
+        <div class="divider"></div>
         
-        <div class="game-section">
-            <h3 class="game-title">Jeu Impossible</h3>
-            <p class="game-instructions">Trouvez la combinaison gagnante... si vous le pouvez!</p>
-            
-            <div class="impossible-game">
-                <div class="color-options">
-                    <div class="color-option" style="background-color: #ff3b30;" data-color="red"></div>
-                    <div class="color-option" style="background-color: #4cd964;" data-color="green"></div>
-                    <div class="color-option" style="background-color: #007aff;" data-color="blue"></div>
-                    <div class="color-option" style="background-color: #ffcc00;" data-color="yellow"></div>
-                </div>
-                
-                <div class="game-board" id="game-board">
-                    <div class="game-cell" data-cell="0">?</div>
-                    <div class="game-cell" data-cell="1">?</div>
-                    <div class="game-cell" data-cell="2">?</div>
-                    <div class="game-cell" data-cell="3">?</div>
-                </div>
-                
-                <div class="controls">
-                    <button class="game-btn" id="check-btn">Vérifier</button>
-                    <button class="game-btn" id="reset-btn">Recommencer</button>
-                </div>
-                
-                <div class="game-status" id="game-status">Sélectionnez une couleur et cliquez sur une case</div>
-            </div>
-        </div>
-        
-        <div class="whatsapp-contact">
-            <p>Pour toute question urgente, contactez-nous uniquement via WhatsApp :</p>
-            <a href="https://wa.me/33612345678" class="whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i> Nous contacter sur WhatsApp
-            </a>
-            <p class="whatsapp-note">Réponse garantie sous 24 heures</p>
-        </div>
+        <a href="https://wa.me/33612345678" class="whatsapp-btn" target="_blank">
+            <i class="fab fa-whatsapp"></i> Nous contacter
+        </a>
     </div>
     
     <footer>
-        <p>&copy; 2023 EBH Technologies. Tous droits réservés.</p>
+        <p>&copy; 2025 EBH Technologies. Tous droits réservés.</p>
     </footer>
-
-    <script>
-        // Jeu impossible à gagner
-        document.addEventListener('DOMContentLoaded', function() {
-            const cells = document.querySelectorAll('.game-cell');
-            const colorOptions = document.querySelectorAll('.color-option');
-            const checkBtn = document.getElementById('check-btn');
-            const resetBtn = document.getElementById('reset-btn');
-            const gameStatus = document.getElementById('game-status');
-            
-            let selectedColor = null;
-            let attempts = 0;
-            let gameActive = true;
-            
-            // Générer une combinaison "gagnante" aléatoire (mais qui change à chaque vérification)
-            let winningCombination = Array(4).fill().map(() => 
-                ['red', 'green', 'blue', 'yellow'][Math.floor(Math.random() * 4)]
-            );
-            
-            // Afficher la combinaison gagnante dans la console (pour prouver qu'elle change)
-            console.log("Combinaison 'gagnante' initiale:", winningCombination);
-            
-            // Sélectionner une couleur
-            colorOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    if (!gameActive) return;
-                    
-                    selectedColor = this.getAttribute('data-color');
-                    colorOptions.forEach(opt => opt.style.borderColor = '#333');
-                    this.style.borderColor = '#fff';
-                    gameStatus.textContent = `Couleur sélectionnée: ${selectedColor}`;
-                });
-            });
-            
-            // Appliquer la couleur à une cellule
-            cells.forEach(cell => {
-                cell.addEventListener('click', function() {
-                    if (!gameActive || !selectedColor) return;
-                    
-                    this.style.backgroundColor = selectedColor;
-                    this.setAttribute('data-color', selectedColor);
-                    this.textContent = "";
-                });
-            });
-            
-            // Vérifier la combinaison (toujours perdante)
-            checkBtn.addEventListener('click', function() {
-                if (!gameActive) return;
-                
-                // Vérifier si toutes les cellules sont remplies
-                const allFilled = Array.from(cells).every(cell => cell.getAttribute('data-color'));
-                
-                if (!allFilled) {
-                    gameStatus.textContent = "Veuillez remplir toutes les cases d'abord!";
-                    return;
-                }
-                
-                attempts++;
-                
-                // Changer la combinaison gagnante à chaque tentative
-                winningCombination = Array(4).fill().map(() => 
-                    ['red', 'green', 'blue', 'yellow'][Math.floor(Math.random() * 4)]
-                );
-                
-                console.log(`Nouvelle combinaison 'gagnante' après tentative ${attempts}:`, winningCombination);
-                
-                // Toujours indiquer qu'il y a des couleurs correctes mais mal placées
-                const correctCount = Math.floor(Math.random() * 2); // 0 ou 1 couleur correcte
-                const misplacedCount = Math.floor(Math.random() * (4 - correctCount));
-                
-                gameStatus.textContent = `❌ Combinaison incorrecte! ${correctCount} couleur(s) correcte(s), ${misplacedCount} mal placée(s). Tentative #${attempts}`;
-                
-                // Après plusieurs tentatives, donner un faux espoir
-                if (attempts === 5) {
-                    gameStatus.textContent += " Vous approchez!";
-                }
-                
-                if (attempts === 10) {
-                    gameStatus.textContent += " Continuez, vous y êtes presque!";
-                }
-                
-                // Après 15 tentatives, bloquer le jeu
-                if (attempts >= 15) {
-                    gameActive = false;
-                    gameStatus.textContent = "⚠️ Trop de tentatives! Le jeu est verrouillé. Rechargez la page pour recommencer.";
-                }
-            });
-            
-            // Réinitialiser le jeu
-            resetBtn.addEventListener('click', function() {
-                cells.forEach(cell => {
-                    cell.style.backgroundColor = '#111';
-                    cell.removeAttribute('data-color');
-                    cell.textContent = "?";
-                });
-                
-                colorOptions.forEach(opt => opt.style.borderColor = '#333');
-                selectedColor = null;
-                attempts = 0;
-                gameActive = true;
-                
-                // Générer une nouvelle combinaison "gagnante"
-                winningCombination = Array(4).fill().map(() => 
-                    ['red', 'green', 'blue', 'yellow'][Math.floor(Math.random() * 4)]
-                );
-                
-                console.log("Nouvelle combinaison 'gagnante' après réinitialisation:", winningCombination);
-                
-                gameStatus.textContent = "Sélectionnez une couleur et cliquez sur une case";
-            });
-        });
-    </script>
 </body>
 </html>
