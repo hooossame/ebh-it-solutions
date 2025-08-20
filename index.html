@@ -3,1292 +3,409 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EBH Technologies - Excellence Technologique</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Maintenance - EBH Technologies</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #000000;
-            --secondary: #ffffff;
-            --accent: #000000;
-            --text: #333333;
-            --light-text: #777777;
-            --bg: #ffffff;
-            --section-bg: #f9f9f9;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text);
-            background-color: var(--bg);
-            scroll-behavior: smooth;
-        }
-        
-        /* Typographie premium */
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            margin: 0;
-        }
-        
-        h1 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; }
-        h2 { font-size: clamp(2rem, 4vw, 3rem); }
-        h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
-        
-        p {
-            font-size: 1.1rem;
+            background: linear-gradient(135deg, #000000, #222222);
+            color: #fff;
             line-height: 1.6;
-            color: var(--light-text);
-        }
-        
-        /* Layout */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-        
-        section {
-            padding: 6rem 0;
-            position: relative;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-        
-        .section-title {
-            position: relative;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-        }
-        
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary);
-        }
-        
-        /* Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background-color: var(--secondary);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-            z-index: 1000;
-            padding: 1rem 0;
-        }
-        
-        .nav-container {
+            overflow-x: hidden;
+            min-height: 100vh;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            text-align: center;
+            padding: 20px;
+            filter: grayscale(100%);
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+            border: 1px solid #333;
         }
         
         .logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-decoration: none;
+            margin-bottom: 30px;
         }
         
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-        
-        .nav-links a {
-            color: var(--text);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-        
-        .nav-links a:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-links a:hover:after {
-            width: 100%;
-        }
-        
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            cursor: pointer;
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            min-height: 800px;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), 
-                        url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
-            position: relative;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-        }
-        
-        .hero-title {
-            font-size: clamp(3rem, 6vw, 5rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-        }
-        
-        .hero-subtitle {
-            font-size: 1.5rem;
-            margin-bottom: 2.5rem;
-            color: var(--light-text);
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background: var(--primary);
-            color: var(--secondary);
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
-        }
-        
-        .btn:hover {
-            background: transparent;
-            color: var(--primary);
-        }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            margin-left: 1rem;
-        }
-        
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--secondary);
-        }
-        
-        /* Services Section */
-        .services {
-            background-color: var(--section-bg);
-        }
-        
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .service-card {
-            background: var(--secondary);
-            padding: 2.5rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-        }
-        
-        .service-icon {
+        .logo h1 {
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
         
-        .service-title {
-            margin-bottom: 1rem;
+        .maintenance-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            color: #fff;
+            animation: pulse 2s infinite;
         }
         
-        /* EBH ONE Section */
-        .ebh-one {
-            position: relative;
-            overflow: hidden;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
         }
         
-        .ebh-one:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
-            opacity: 0.03;
-            z-index: -1;
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #fff;
+            text-transform: uppercase;
         }
         
-        .tabs {
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ccc;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .game-section {
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid #333;
+        }
+        
+        .game-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .impossible-game {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .game-instructions {
+            margin-bottom: 20px;
+            color: #aaa;
+            font-style: italic;
+        }
+        
+        .color-options {
             display: flex;
             justify-content: center;
-            margin-bottom: 3rem;
-            flex-wrap: wrap;
-            gap: 1rem;
+            gap: 10px;
+            margin-bottom: 20px;
         }
         
-        .tab-btn {
-            padding: 1rem 2rem;
-            background: none;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            position: relative;
-            color: var(--light-text);
-            transition: all 0.3s ease;
-        }
-        
-        .tab-btn.active {
-            color: var(--primary);
-        }
-        
-        .tab-btn:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-        
-        .tab-btn.active:after {
-            width: 100%;
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        
-        .tab-content-inner {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-        
-        .tab-features {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-        
-        .feature-col h4 {
-            margin-bottom: 1rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .feature-col h4:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--primary);
-        }
-        
-        .feature-col ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .feature-col li {
-            margin-bottom: 0.5rem;
-            position: relative;
-            padding-left: 1.5rem;
-        }
-        
-        .feature-col li:before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-        
-        .tab-image {
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .tab-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        /* EBH Store Section */
-        .store {
-            background-color: var(--section-bg);
-        }
-        
-        .store-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        
-        .step {
-            text-align: center;
-            padding: 2rem;
-            background: var(--secondary);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-        }
-        
-        .step-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+        .color-option {
             width: 50px;
             height: 50px;
-            background: var(--primary);
-            color: var(--secondary);
             border-radius: 50%;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        
-        .step-title {
-            margin-bottom: 1rem;
-        }
-        
-        .expertise-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
-            margin-bottom: 4rem;
-        }
-        
-        .expertise-item {
-            text-align: center;
-            padding: 1.5rem 1rem;
-            background: var(--secondary);
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease;
-        }
-        
-        .expertise-item:hover {
-            transform: translateY(-5px);
-        }
-        
-        .expertise-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-        
-        /* Partners Section */
-        .partners {
-            text-align: center;
-        }
-        
-        .partners-logos {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-        
-        .partner-logo {
-            max-width: 150px;
-            height: auto;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: all 0.3s ease;
-        }
-        
-        .partner-logo:hover {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-        
-        /* Contact Section */
-        .contact-form {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-family: 'Inter', sans-serif;
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-        }
-        
-        .contact-info {
-            background: var(--section-bg);
-            padding: 2rem;
-            border-radius: 10px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .contact-icon {
-            margin-right: 1rem;
-            font-size: 1.5rem;
-        }
-        
-        /* FAQ Section */
-        .faq-item {
-            margin-bottom: 1rem;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .faq-question {
-            width: 100%;
-            text-align: left;
-            background: none;
-            border: none;
-            padding: 1.5rem 0;
-            font-weight: 600;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             cursor: pointer;
+            transition: transform 0.3s;
+            border: 2px solid #333;
         }
         
-        .faq-answer {
-            padding-bottom: 1.5rem;
-            display: none;
-        }
-        
-        .faq-answer.open {
-            display: block;
-        }
-        
-        /* Footer */
-        footer {
-            background: var(--primary);
-            color: var(--secondary);
-            padding: 4rem 0 2rem;
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
-        
-        .footer-links h4 {
-            margin-bottom: 1.5rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .footer-links h4:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 2px;
-            background: var(--secondary);
-        }
-        
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 0.5rem;
-        }
-        
-        .footer-links a {
-            color: var(--light-text);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--secondary);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding-top: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        /* WhatsApp Float */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 60px;
-            height: 60px;
-            background: #25D366;
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 100;
-            transition: all 0.3s ease;
-        }
-        
-        .whatsapp-float:hover {
+        .color-option:hover {
             transform: scale(1.1);
         }
         
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .tab-content-inner {
-                grid-template-columns: 1fr;
-            }
-            
-            .tab-image {
-                order: -1;
-            }
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin: 20px auto;
+            max-width: 300px;
+        }
+        
+        .game-cell {
+            width: 70px;
+            height: 70px;
+            background: #111;
+            border: 2px solid #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .game-cell:hover {
+            background: #222;
+        }
+        
+        .controls {
+            margin-top: 20px;
+        }
+        
+        .game-btn {
+            padding: 10px 20px;
+            background: #111;
+            color: white;
+            border: 1px solid #333;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 0 5px;
+        }
+        
+        .game-btn:hover {
+            background: #222;
+        }
+        
+        .game-status {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #fff;
+            min-height: 30px;
+        }
+        
+        .whatsapp-contact {
+            margin-top: 40px;
+        }
+        
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 30px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .whatsapp-btn i {
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: #20bd5f;
+        }
+        
+        .whatsapp-note {
+            margin-top: 15px;
+            font-size: 1rem;
+            color: #999;
+        }
+        
+        footer {
+            margin-top: 50px;
+            color: #666;
+            font-size: 0.9rem;
         }
         
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .container {
+                padding: 20px;
             }
             
-            .mobile-menu-btn {
-                display: block;
+            .logo h1 {
+                font-size: 2rem;
             }
             
-            .hero {
-                min-height: auto;
-                padding: 8rem 0;
+            h2 {
+                font-size: 1.8rem;
             }
             
-            .contact-form {
-                grid-template-columns: 1fr;
+            p {
+                font-size: 1rem;
             }
             
-            .btn-secondary {
-                margin-left: 0;
-                margin-top: 1rem;
-                display: block;
+            .game-cell {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .color-option {
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">EBH TECHNOLOGIES</a>
-            <nav class="nav-links">
-                <a href="#services">Services</a>
-                <a href="#ebh-one">EBH ONE</a>
-                <a href="#store">EBH Store</a>
-                <a href="#partners">Partenaires</a>
-                <a href="#contact">Contact</a>
-            </nav>
-            <button class="mobile-menu-btn">☰</button>
+    <div class="container">
+        <div class="logo">
+            <h1>EBH Technologies</h1>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="tagline">Pionniers Tech depuis 2022</span>
-                <h1 class="hero-title">L'excellence technologique à portée de main</h1>
-                <p class="hero-subtitle">Votre partenaire tout-en-un pour des solutions informatiques sur mesure, quelle que soit votre taille.</p>
-                <div class="hero-buttons">
-                    <a href="#services" class="btn">Découvrir nos solutions</a>
-                    <a href="#contact" class="btn btn-secondary">Contactez-nous</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nos Expertises</h2>
-                <p>Des solutions IT sur mesure pour répondre à tous vos besoins technologiques</p>
-            </div>
+        
+        <i class="fas fa-tools maintenance-icon"></i>
+        
+        <h2>Site en maintenance</h2>
+        <p>Nous effectuons actuellement des travaux de maintenance sur notre site. Veuillez nous excuser pour la gêne occasionnée. Notre équipe travaille dur pour restaurer le service au plus vite.</p>
+        
+        <div class="game-section">
+            <h3 class="game-title">Jeu Impossible</h3>
+            <p class="game-instructions">Trouvez la combinaison gagnante... si vous le pouvez!</p>
             
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🖥️</div>
-                    <h3 class="service-title">Infrastructure IT</h3>
-                    <p>Nous concevons et déployons des infrastructures réseaux et systèmes performantes, sécurisées et évolutives pour votre entreprise.</p>
-                    <a href="#contact" class="btn">En savoir plus</a>
+            <div class="impossible-game">
+                <div class="color-options">
+                    <div class="color-option" style="background-color: #ff3b30;" data-color="red"></div>
+                    <div class="color-option" style="background-color: #4cd964;" data-color="green"></div>
+                    <div class="color-option" style="background-color: #007aff;" data-color="blue"></div>
+                    <div class="color-option" style="background-color: #ffcc00;" data-color="yellow"></div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">☁️</div>
-                    <h3 class="service-title">Cloud & Data</h3>
-                    <p>Solutions cloud hybrides et gestion de données optimale pour une accessibilité et une sécurité maximales de vos informations critiques.</p>
-                    <a href="#contact" class="btn">En savoir plus</a>
+                <div class="game-board" id="game-board">
+                    <div class="game-cell" data-cell="0">?</div>
+                    <div class="game-cell" data-cell="1">?</div>
+                    <div class="game-cell" data-cell="2">?</div>
+                    <div class="game-cell" data-cell="3">?</div>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">🔒</div>
-                    <h3 class="service-title">Cybersécurité</h3>
-                    <p>Protection avancée contre les menaces avec audits complets, formations et solutions de sécurité sur mesure pour votre entreprise.</p>
-                    <a href="#contact" class="btn">En savoir plus</a>
+                <div class="controls">
+                    <button class="game-btn" id="check-btn">Vérifier</button>
+                    <button class="game-btn" id="reset-btn">Recommencer</button>
                 </div>
                 
-                <div class="service-card">
-                    <div class="service-icon">💻</div>
-                    <h3 class="service-title">Développement</h3>
-                    <p>Applications web et mobiles sur mesure, conçues pour optimiser vos processus métiers et améliorer l'expérience utilisateur.</p>
-                    <a href="#contact" class="btn">En savoir plus</a>
-                </div>
+                <div class="game-status" id="game-status">Sélectionnez une couleur et cliquez sur une case</div>
             </div>
         </div>
-    </section>
-
-    <!-- EBH ONE Section -->
-    <section id="ebh-one" class="ebh-one">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">EBH ONE</h2>
-                <p>L'offre modulaire & intelligente - Un seul partenaire. Une seule plateforme. Une solution complète.</p>
-            </div>
-            
-            <div class="tabs">
-                <button class="tab-btn active" data-tab="ehelp">e-Help</button>
-                <button class="tab-btn" data-tab="managed">Managed</button>
-                <button class="tab-btn" data-tab="secure">Secure</button>
-                <button class="tab-btn" data-tab="intelligence">Intelligence</button>
-                <button class="tab-btn" data-tab="online">Online</button>
-            </div>
-            
-            <div class="tab-content active" id="ehelp-content">
-                <div class="tab-content-inner">
-                    <div class="tab-text">
-                        <h3>EBH e-Help & e-Help+</h3>
-                        <p class="service-description">Support informatique à distance — dès <strong>0 DH/an</strong></p>
-                        
-                        <div class="tab-features">
-                            <div class="feature-col">
-                                <h4>e-Help (Gratuit)</h4>
-                                <ul>
-                                    <li>1 ticket de support/mois</li>
-                                    <li>Interface client intuitive</li>
-                                    <li>Support 9h-19h (Lun-Sam)</li>
-                                </ul>
-                            </div>
-                            <div class="feature-col">
-                                <h4>e-Help+ (0,3 DH/jour)</h4>
-                                <ul>
-                                    <li>Support illimité (niveaux 1-3)</li>
-                                    <li>Traitement des urgences</li>
-                                    <li>Visites onboarding sur demande</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <blockquote class="value-prop">
-                            <strong>Pourquoi c'est puissant ?</strong> Vous commencez gratuitement et évoluez selon vos besoins. Sans engagement lourd, sans technicien à embaucher.
-                        </blockquote>
-                    </div>
-                    <div class="tab-image">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80" alt="Support technique EBH e-Help">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="managed-content">
-                <div class="tab-content-inner">
-                    <div class="tab-text">
-                        <h3>EBH Business Managed</h3>
-                        <p class="service-description">Infogérance & gestion IT globale — dès <strong>119 DH/jour</strong></p>
-                        
-                        <div class="tab-features">
-                            <div class="feature-col">
-                                <h4>Services inclus</h4>
-                                <ul>
-                                    <li>Gestion complète du parc IT</li>
-                                    <li>Suivi des tickets et résolutions</li>
-                                    <li>Inventaire matériel automatisé</li>
-                                    <li>Clean desk et configuration</li>
-                                </ul>
-                            </div>
-                            <div class="feature-col">
-                                <h4>Avantages</h4>
-                                <ul>
-                                    <li>Réunions mensuelles de suivi</li>
-                                    <li>Dashboard d'analyse</li>
-                                    <li>Onboarding/offboarding clé en main</li>
-                                    <li>Planning IT personnalisé</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <blockquote class="value-prop">
-                            <strong>Pourquoi c'est puissant ?</strong> Vous déléguez toute la gestion technique, sans recruter ni investir dans une équipe IT interne.
-                        </blockquote>
-                    </div>
-                    <div class="tab-image">
-                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80" alt="Gestion IT EBH Managed">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="secure-content">
-                <div class="tab-content-inner">
-                    <div class="tab-text">
-                        <h3>EBH Business Secure</h3>
-                        <p class="service-description">Cybersécurité, audit & conformité — dès <strong>110 DH/jour</strong></p>
-                        
-                        <div class="tab-features">
-                            <div class="feature-col">
-                                <h4>Protections</h4>
-                                <ul>
-                                    <li>Audit de sécurité complet</li>
-                                    <li>Mise en conformité RGPD/ISO</li>
-                                    <li>Protection réseaux et endpoints</li>
-                                    <li>Tests d'intrusion (ethical hacking)</li>
-                                </ul>
-                            </div>
-                            <div class="feature-col">
-                                <h4>Avantages</h4>
-                                <ul>
-                                    <li>Supervision 24/7</li>
-                                    <li>Alertes en temps réel</li>
-                                    <li>Sauvegarde cloud sécurisée</li>
-                                    <li>Formation anti-phishing</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <blockquote class="value-prop">
-                            <strong>Pourquoi c'est puissant ?</strong> Une seule faille peut coûter des millions. EBH vous aide à prévenir plutôt que guérir.
-                        </blockquote>
-                    </div>
-                    <div class="tab-image">
-                        <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80" alt="Cybersécurité EBH Secure">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="intelligence-content">
-                <div class="tab-content-inner">
-                    <div class="tab-text">
-                        <h3>EBH Business Intelligence</h3>
-                        <p class="service-description">Automatisation, IA & performance — dès <strong>90 DH/jour</strong></p>
-                        
-                        <div class="tab-features">
-                            <div class="feature-col">
-                                <h4>Solutions IA</h4>
-                                <ul>
-                                    <li>Tableaux de bord intelligents</li>
-                                    <li>Analyse prédictive des données</li>
-                                    <li>Automatisation des processus</li>
-                                    <li>Chatbots métiers personnalisés</li>
-                                </ul>
-                            </div>
-                            <div class="feature-col">
-                                <h4>Avantages</h4>
-                                <ul>
-                                    <li>Intégration avec vos outils existants</li>
-                                    <li>Reporting automatisé</li>
-                                    <li>Alertes KPI personnalisées</li>
-                                    <li>Gain de temps significatif</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <blockquote class="value-prop">
-                            <strong>Pourquoi c'est puissant ?</strong> Vous transformez vos données en décisions et boostez la rentabilité sans recruter plus.
-                        </blockquote>
-                    </div>
-                    <div class="tab-image">
-                        <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80" alt="Intelligence Artificielle EBH">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="tab-content" id="online-content">
-                <div class="tab-content-inner">
-                    <div class="tab-text">
-                        <h3>EBH Business Online</h3>
-                        <p class="service-description">Présence digitale & stratégie marketing — dès <strong>22 DH/jour</strong></p>
-                        
-                        <div class="tab-features">
-                            <div class="feature-col">
-                                <h4>Création</h4>
-                                <ul>
-                                    <li>Site web vitrine/e-commerce</li>
-                                    <li>Design professionnel responsive</li>
-                                    <li>Contenu optimisé SEO</li>
-                                    <li>Identité visuelle complète</li>
-                                </ul>
-                            </div>
-                            <div class="feature-col">
-                                <h4>Gestion</h4>
-                                <ul>
-                                    <li>Animation réseaux sociaux</li>
-                                    <li>Campagnes marketing</li>
-                                    <li>Emailing professionnel</li>
-                                    <li>Reporting mensuel</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <blockquote class="value-prop">
-                            <strong>Pourquoi c'est puissant ?</strong> Avec EBH Online, vous vendez, attirez et convertissez avec une présence digitale premium.
-                        </blockquote>
-                    </div>
-                    <div class="tab-image">
-                        <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1500&q=80" alt="Digital EBH Online">
-                    </div>
-                </div>
-            </div>
-            
-            <div class="unified-cta">
-                <h3>Pourquoi EBH One est différent ?</h3>
-                <ul class="usp-list">
-                    <li>Tout centralisé sur une seule plateforme</li>
-                    <li>Abonnements adaptables sans frais cachés</li>
-                    <li>Paiement jusqu'à 4x • Garantie 3 ans • Support prioritaire</li>
-                </ul>
-                <a href="#contact" class="btn">Rejoignez EBH One</a>
-                <p class="cta-note">Une plateforme. Cinq packs. Zéro stress.</p>
-            </div>
+        
+        <div class="whatsapp-contact">
+            <p>Pour toute question urgente, contactez-nous uniquement via WhatsApp :</p>
+            <a href="https://wa.me/33612345678" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Nous contacter sur WhatsApp
+            </a>
+            <p class="whatsapp-note">Réponse garantie sous 24 heures</p>
         </div>
-    </section>
-
-    <!-- EBH Store Section -->
-    <section id="store" class="store">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">EBH Store</h2>
-                <p>Solutions matérielles sur mesure conçues pour vos besoins spécifiques</p>
-            </div>
-            
-            <div class="store-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3 class="step-title">Exprimez vos besoins</h3>
-                    <p>Décrivez simplement votre projet, vos contraintes et vos objectifs. Aucune expertise technique requise.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3 class="step-title">Analyse technique</h3>
-                    <p>Nos experts étudient votre demande et sélectionnent les meilleures options disponibles sur le marché.</p>
-                </div>
-                
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3 class="step-title">Devis personnalisé</h3>
-                    <p>Recevez sous 24h une proposition claire avec plusieurs alternatives adaptées à votre budget.</p>
-                </div>
-            </div>
-            
-            <h3 class="section-subtitle">Nos domaines d'expertise</h3>
-            
-            <div class="expertise-grid">
-                <div class="expertise-item">
-                    <div class="expertise-icon">💻</div>
-                    <h4>Postes de travail</h4>
-                </div>
-                
-                <div class="expertise-item">
-                    <div class="expertise-icon">🖥️</div>
-                    <h4>Infrastructure</h4>
-                </div>
-                
-                <div class="expertise-item">
-                    <div class="expertise-icon">🌐</div>
-                    <h4>Réseaux</h4>
-                </div>
-                
-                <div class="expertise-item">
-                    <div class="expertise-icon">🔒</div>
-                    <h4>Sécurité</h4>
-                </div>
-            </div>
-            
-            <div class="store-benefits">
-                <h3 class="section-subtitle">Pourquoi choisir notre approche ?</h3>
-                
-                <div class="benefits-grid">
-                    <div class="benefit-item">
-                        <h4>Gain de temps</h4>
-                        <p>Nous filtrons les milliers d'options disponibles pour ne vous proposer que les plus pertinentes</p>
-                    </div>
-                    
-                    <div class="benefit-item">
-                        <h4>Meilleur rapport qualité-prix</h4>
-                        <p>Accès à nos tarifs négociés avec les principaux fournisseurs</p>
-                    </div>
-                    
-                    <div class="benefit-item">
-                        <h4>Garantie intégrée</h4>
-                        <p>Tous nos équipements bénéficient de la garantie EBH CARE (12 à 36 mois)</p>
-                    </div>
-                    
-                    <div class="benefit-item">
-                        <h4>Paiement flexible</h4>
-                        <p>Solution de paiement en 4x sans frais pour les clients abonnés</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="store-cta">
-                <a href="#contact" class="btn">Exprimer mon besoin</a>
-                <a href="tel:+212708908907" class="btn btn-secondary">Appeler un expert</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Partners Section -->
-    <section id="partners" class="partners">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nos Partenaires</h2>
-                <p>Nous collaborons avec les leaders technologiques mondiaux et locaux pour vous offrir les meilleures solutions</p>
-            </div>
-            
-            <div class="partners-logos">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" alt="Google" class="partner-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Microsoft_logo_%282012%29.svg/1200px-Microsoft_logo_%282012%29.svg.png" alt="Microsoft" class="partner-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/Intel_logo_%282006-2020%29.svg/1200px-Intel_logo_%282006-2020%29.svg.png" alt="Intel" class="partner-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/1200px-HP_logo_2012.svg.png" alt="HP" class="partner-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Iam_logo.svg/1200px-Iam_logo.svg.png" alt="IAM" class="partner-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Orange_logo.svg/1200px-Orange_logo.svg.png" alt="Orange" class="partner-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Dell_Logo.png/1200px-Dell_Logo.png" alt="Dell" class="partner-logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/1200px-IBM_logo.svg.png" alt="IBM" class="partner-logo">
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Contactez-nous</h2>
-                <p>Prêt à transformer votre IT ? Parlons-en dès maintenant</p>
-            </div>
-            
-            <div class="contact-form">
-                <form id="contact-form" class="form">
-                    <div class="form-group">
-                        <label for="name">Nom / Entreprise *</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email">Email *</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="phone">Téléphone *</label>
-                        <input type="tel" id="phone" name="phone" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="service">Service concerné *</label>
-                        <select id="service" name="service" required>
-                            <option value="" disabled selected>Sélectionnez une option</option>
-                            <option value="Abonnement PRO">Abonnement PRO</option>
-                            <option value="Abonnement ENTREPRISE">Abonnement ENTREPRISE</option>
-                            <option value="Service informatique sur mesure">Service informatique sur mesure</option>
-                            <option value="Formation">Formation</option>
-                            <option value="Consultation">Consultation</option>
-                            <option value="EBH Store">EBH Store</option>
-                            <option value="EBH Care">EBH Care</option>
-                            <option value="HNIA (IA)">HNIA (Intelligence Artificielle)</option>
-                            <option value="Autre">Autre demande</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message *</label>
-                        <textarea id="message" name="message" required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn">Envoyer la demande</button>
-                </form>
-                
-                <div class="contact-info">
-                    <h3>Nos coordonnées</h3>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div>
-                            <p class="contact-label">Téléphone</p>
-                            <p class="contact-value">+212 7 08 908 907</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div>
-                            <p class="contact-label">Email</p>
-                            <p class="contact-value">contact@ebh.ma</p>
-                            <p class="contact-value">ebhoussame@ebh.ma</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div>
-                            <p class="contact-label">Adresse</p>
-                            <p class="contact-value">Rabat, Maroc</p>
-                            <p class="contact-value">Sur rendez-vous</p>
-                        </div>
-                    </div>
-                    
-                    <div class="whatsapp-cta">
-                        <h4>Contact Instantané</h4>
-                        <p>Besoin d'une réponse rapide ? Contactez-nous directement via WhatsApp</p>
-                        <a href="https://wa.me/212708908907" class="btn whatsapp-btn">Ouvrir WhatsApp</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="faq">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Questions Fréquentes</h2>
-                <p>Trouvez rapidement les réponses à vos questions</p>
-            </div>
-            
-            <div class="faq-items">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Le site est en BETA, les services sont-ils vraiment opérationnels ?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Oui, absolument ! La mention BETA concerne uniquement notre site web. Tous nos services sont pleinement opérationnels et bénéficient de notre support premium. Nous améliorons constamment notre plateforme en ligne pour vous offrir une meilleure expérience.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Le paiement est-il obligatoirement annuel ?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Pour les abonnements PRO et ENTREPRISE, nous proposons principalement un paiement annuel qui vous permet de bénéficier des tarifs les plus avantageux. Cependant, pour les entreprises qui le souhaitent, des solutions de paiement trimestriel peuvent être envisagées avec un léger supplément.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Puis-je ajouter des services à la carte à mon abonnement ?
-                        <span class="faq-icon">+</span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Tout à fait ! Nos abonnements constituent une base solide, mais vous pouvez à tout moment ajouter des services complémentaires selon vos besoins évolutifs. Ces services supplémentaires bénéficient d'une remise de 15% pour nos abonnés PRO et 25% pour nos abonnés ENTREPRISE.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="faq-cta">
-                <p>Vous avez d'autres questions ?</p>
-                <a href="#contact" class="btn">Nous contacter</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+    </div>
+    
     <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <a href="#" class="footer-logo">EBH TECHNOLOGIES</a>
-                    <p>Votre partenaire IT de confiance pour la transformation digitale de votre entreprise au Maroc.</p>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Liens Rapides</h4>
-                    <ul>
-                        <li><a href="#services">Nos Services</a></li>
-                        <li><a href="#ebh-one">EBH ONE</a></li>
-                        <li><a href="#store">EBH Store</a></li>
-                        <li><a href="#partners">Partenaires</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-links">
-                    <h4>Services</h4>
-                    <ul>
-                        <li><a href="#services">Infrastructure IT</a></li>
-                        <li><a href="#services">Cloud & Data</a></li>
-                        <li><a href="#services">Cybersécurité</a></li>
-                        <li><a href="#services">Développement</a></li>
-                        <li><a href="#ebh-one">Abonnements</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-contact">
-                    <h4>Contact</h4>
-                    <p>📞 +212 7 08 908 907</p>
-                    <p>✉️ contact@ebh.ma</p>
-                    <p>📍 Rabat, Maroc</p>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>© 2025 EBH Technologies. Tous droits réservés.</p>
-                <p>Version BETA 1.2</p>
-            </div>
-        </div>
+        <p>&copy; 2023 EBH Technologies. Tous droits réservés.</p>
     </footer>
 
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/212708908907" class="whatsapp-float" target="_blank">
-        <span>💬</span>
-    </a>
-
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('show');
-        });
-        
-        // Tab Functionality
-        const tabBtns = document.querySelectorAll('.tab-btn');
-        const tabContents = document.querySelectorAll('.tab-content');
-        
-        tabBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const tabId = btn.getAttribute('data-tab');
-                
-                // Remove active class from all buttons and contents
-                tabBtns.forEach(btn => btn.classList.remove('active'));
-                tabContents.forEach(content => content.classList.remove('active'));
-                
-                // Add active class to clicked button and corresponding content
-                btn.classList.add('active');
-                document.getElementById(`${tabId}-content`).classList.add('active');
+        // Jeu impossible à gagner
+        document.addEventListener('DOMContentLoaded', function() {
+            const cells = document.querySelectorAll('.game-cell');
+            const colorOptions = document.querySelectorAll('.color-option');
+            const checkBtn = document.getElementById('check-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const gameStatus = document.getElementById('game-status');
+            
+            let selectedColor = null;
+            let attempts = 0;
+            let gameActive = true;
+            
+            // Générer une combinaison "gagnante" aléatoire (mais qui change à chaque vérification)
+            let winningCombination = Array(4).fill().map(() => 
+                ['red', 'green', 'blue', 'yellow'][Math.floor(Math.random() * 4)]
+            );
+            
+            // Afficher la combinaison gagnante dans la console (pour prouver qu'elle change)
+            console.log("Combinaison 'gagnante' initiale:", winningCombination);
+            
+            // Sélectionner une couleur
+            colorOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    if (!gameActive) return;
+                    
+                    selectedColor = this.getAttribute('data-color');
+                    colorOptions.forEach(opt => opt.style.borderColor = '#333');
+                    this.style.borderColor = '#fff';
+                    gameStatus.textContent = `Couleur sélectionnée: ${selectedColor}`;
+                });
             });
-        });
-        
-        // FAQ Toggle
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                const answer = question.nextElementSibling;
-                const icon = question.querySelector('.faq-icon');
+            
+            // Appliquer la couleur à une cellule
+            cells.forEach(cell => {
+                cell.addEventListener('click', function() {
+                    if (!gameActive || !selectedColor) return;
+                    
+                    this.style.backgroundColor = selectedColor;
+                    this.setAttribute('data-color', selectedColor);
+                    this.textContent = "";
+                });
+            });
+            
+            // Vérifier la combinaison (toujours perdante)
+            checkBtn.addEventListener('click', function() {
+                if (!gameActive) return;
                 
-                // Toggle answer visibility
-                answer.classList.toggle('open');
+                // Vérifier si toutes les cellules sont remplies
+                const allFilled = Array.from(cells).every(cell => cell.getAttribute('data-color'));
                 
-                // Change icon
-                if (answer.classList.contains('open')) {
-                    icon.textContent = '-';
-                } else {
-                    icon.textContent = '+';
+                if (!allFilled) {
+                    gameStatus.textContent = "Veuillez remplir toutes les cases d'abord!";
+                    return;
+                }
+                
+                attempts++;
+                
+                // Changer la combinaison gagnante à chaque tentative
+                winningCombination = Array(4).fill().map(() => 
+                    ['red', 'green', 'blue', 'yellow'][Math.floor(Math.random() * 4)]
+                );
+                
+                console.log(`Nouvelle combinaison 'gagnante' après tentative ${attempts}:`, winningCombination);
+                
+                // Toujours indiquer qu'il y a des couleurs correctes mais mal placées
+                const correctCount = Math.floor(Math.random() * 2); // 0 ou 1 couleur correcte
+                const misplacedCount = Math.floor(Math.random() * (4 - correctCount));
+                
+                gameStatus.textContent = `❌ Combinaison incorrecte! ${correctCount} couleur(s) correcte(s), ${misplacedCount} mal placée(s). Tentative #${attempts}`;
+                
+                // Après plusieurs tentatives, donner un faux espoir
+                if (attempts === 5) {
+                    gameStatus.textContent += " Vous approchez!";
+                }
+                
+                if (attempts === 10) {
+                    gameStatus.textContent += " Continuez, vous y êtes presque!";
+                }
+                
+                // Après 15 tentatives, bloquer le jeu
+                if (attempts >= 15) {
+                    gameActive = false;
+                    gameStatus.textContent = "⚠️ Trop de tentatives! Le jeu est verrouillé. Rechargez la page pour recommencer.";
                 }
             });
-        });
-        
-        // Form Submission
-        const contactForm = document.getElementById('contact-form');
-        
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
             
-            // Here you would typically send the form data to a server
-            // For this example, we'll just show a success message
-            alert('Merci pour votre message ! Nous vous contacterons bientôt.');
-            contactForm.reset();
-        });
-        
-        // Smooth Scrolling for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
+            // Réinitialiser le jeu
+            resetBtn.addEventListener('click', function() {
+                cells.forEach(cell => {
+                    cell.style.backgroundColor = '#111';
+                    cell.removeAttribute('data-color');
+                    cell.textContent = "?";
                 });
                 
-                // Close mobile menu if open
-                navLinks.classList.remove('show');
+                colorOptions.forEach(opt => opt.style.borderColor = '#333');
+                selectedColor = null;
+                attempts = 0;
+                gameActive = true;
+                
+                // Générer une nouvelle combinaison "gagnante"
+                winningCombination = Array(4).fill().map(() => 
+                    ['red', 'green', 'blue', 'yellow'][Math.floor(Math.random() * 4)]
+                );
+                
+                console.log("Nouvelle combinaison 'gagnante' après réinitialisation:", winningCombination);
+                
+                gameStatus.textContent = "Sélectionnez une couleur et cliquez sur une case";
             });
         });
     </script>
