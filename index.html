@@ -3,163 +3,711 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance - EBH Technologies</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>EBH Technologies | Support Informatique Professionnel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* Variables et reset */
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --light-gray: #f5f5f7;
+            --medium-gray: #86868b;
+            --dark-gray: #333333;
+            --whatsapp: #25D366;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', 'Helvetica Neue', sans-serif;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #000;
-            color: #fff;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
+            background-color: var(--white);
+            color: var(--black);
             line-height: 1.6;
+            overflow-x: hidden;
+            font-weight: 400;
         }
-        
+
+        /* Typographie */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        /* Layout */
         .container {
-            max-width: 600px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 100px 0;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            padding: 60px 40px;
-            border: 1px solid #333;
-            border-radius: 2px;
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--black);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 40px;
+        }
+
+        nav ul li a {
+            color: var(--dark-gray);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 16px;
+            transition: var(--transition);
             position: relative;
         }
-        
-        .logo {
-            font-weight: 600;
-            font-size: 18px;
-            letter-spacing: 4px;
-            margin-bottom: 50px;
-            text-transform: uppercase;
-            color: #fff;
-        }
-        
-        .maintenance-icon {
-            font-size: 48px;
-            margin-bottom: 40px;
-            color: #fff;
-        }
-        
-        h2 {
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 20px;
-            color: #fff;
-            letter-spacing: 0.5px;
-        }
-        
-        p {
-            font-size: 16px;
-            font-weight: 300;
-            margin-bottom: 40px;
-            color: #aaa;
-            line-height: 1.7;
-        }
-        
-        .divider {
+
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
             height: 1px;
-            width: 60px;
-            background: #fff;
-            margin: 40px auto;
-            opacity: 0.3;
+            background-color: var(--black);
+            transition: var(--transition);
         }
-        
-        .whatsapp-btn {
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--black);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 0 120px;
+            text-align: center;
+            background-color: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            letter-spacing: -1.5px;
+        }
+
+        .hero p {
+            font-size: 22px;
+            color: var(--medium-gray);
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.5;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            background-color: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: var(--transition);
+            border: 1px solid var(--black);
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--black);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background-color: rgba(245, 245, 247, 0.5);
+            border-radius: 16px;
+        }
+
+        .contact-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--black);
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .contact-btn {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            padding: 14px 28px;
-            background: transparent;
-            color: #fff;
+            padding: 16px 30px;
+            background-color: var(--black);
+            color: var(--white);
             text-decoration: none;
-            border: 1px solid #fff;
-            border-radius: 0;
-            font-weight: 400;
-            font-size: 14px;
-            letter-spacing: 1px;
-            transition: all 0.2s ease;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: var(--transition);
+            border: 1px solid var(--black);
+            min-width: 180px;
+            justify-content: center;
         }
-        
-        .whatsapp-btn:hover {
-            background: #fff;
-            color: #000;
-        }
-        
-        .whatsapp-btn i {
+
+        .contact-btn i {
             margin-right: 10px;
-            font-size: 16px;
+            font-size: 20px;
         }
-        
+
+        .contact-btn.whatsapp {
+            background-color: var(--whatsapp);
+            border-color: var(--whatsapp);
+        }
+
+        .contact-btn:hover {
+            background-color: transparent;
+            color: var(--black);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-btn.whatsapp:hover {
+            color: var(--whatsapp);
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--light-gray);
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 40px;
+            margin-bottom: 80px;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 40px;
+            margin-bottom: 24px;
+            color: var(--black);
+        }
+
+        .service-card h3 {
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: var(--medium-gray);
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--white);
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 40px;
+            margin-bottom: 30px;
+        }
+
+        .about-content p {
+            font-size: 18px;
+            color: var(--medium-gray);
+            margin-bottom: 24px;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta {
+            background-color: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 120px 0;
+        }
+
+        .cta h2 {
+            font-size: 40px;
+            margin-bottom: 24px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .btn-light {
+            background-color: var(--white);
+            color: var(--black);
+        }
+
+        .btn-light:hover {
+            background-color: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+
+        /* Footer */
         footer {
-            margin-top: 60px;
-            font-size: 12px;
-            color: #666;
-            letter-spacing: 0.5px;
+            background-color: var(--light-gray);
+            padding: 80px 0 40px;
         }
-        
-        /* Animation subtile */
-        @keyframes fade {
-            0%, 100% { opacity: 0.7; }
-            50% { opacity: 1; }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
         }
-        
-        .maintenance-icon {
-            animation: fade 3s infinite ease-in-out;
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 24px;
+            font-weight: 600;
         }
-        
+
+        .footer-column p, .footer-column a {
+            color: var(--medium-gray);
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-column a:hover {
+            color: var(--black);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: var(--whatsapp);
+            color: var(--white);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        /* Call Button */
+        .call-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 110px;
+            right: 40px;
+            background-color: var(--black);
+            color: var(--white);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .call-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+        }
+
         /* Responsive */
-        @media (max-width: 768px) {
-            .container {
-                padding: 40px 30px;
-                border: none;
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 48px;
             }
-            
-            h2 {
-                font-size: 20px;
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
             }
-            
-            p {
-                font-size: 15px;
+
+            nav ul.active {
+                display: flex;
             }
-            
-            .logo {
-                font-size: 16px;
-                margin-bottom: 40px;
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .whatsapp-float, .call-float {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .call-float {
+                bottom: 90px;
             }
         }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .section-title, .about-content h2, .cta h2 {
+                font-size: 32px;
+            }
+
+            .section {
+                padding: 80px 0;
+            }
+
+            .service-card {
+                padding: 30px;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-btn {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .contact-section {
+                padding: 20px;
+            }
+
+            .contact-title {
+                font-size: 24px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animate {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">EBH Technologies</div>
-        
-        <div class="maintenance-icon">
-            <i class="fas fa-tools"></i>
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/212708908907?text=Bonjour,%20je%20suis%20intéressé%20par%20vos%20services" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Call Float Button -->
+    <a href="tel:0708908907" class="call-float">
+        <i class="fas fa-phone"></i>
+    </a>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">EBH</a>
+            <nav>
+                <ul>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-        
-        <h2>Maintenance en cours</h2>
-        <p>Notre site est actuellement en maintenance. Nous travaillons pour améliorer votre expérience et serons de retour très bientôt.</p>
-        
-        <div class="divider"></div>
-        
-        <a href="https://wa.me/2120708908907" class="whatsapp-btn" target="_blank">
-            <i class="fab fa-whatsapp"></i> Nous contacter
-        </a>
-    </div>
-    
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h1 class="animate">Support informatique illimité pour les professionnels</h1>
+            <p class="animate delay-1">Assistance à distance ou sur site dans tout le Maroc, quel que soit votre niveau ou la taille de votre structure.</p>
+
+            <div class="contact-section animate delay-2">
+                <h3 class="contact-title">Contactez-nous pour un devis gratuit</h3>
+                <div class="contact-buttons">
+                    <a href="https://wa.me/212708908907?text=Bonjour,%20je%20suis%20intéressé%20par%20vos%20services%20et%20je%20souhaite%20obtenir%20un%20devis." class="contact-btn whatsapp" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Devis WhatsApp
+                    </a>
+                    <a href="tel:0708908907" class="contact-btn">
+                        <i class="fas fa-phone"></i> Appel direct
+                    </a>
+                    <a href="mailto:contact@ebh.ma?subject=Demande%20de%20devis&body=Bonjour,%20je%20souhaite%20obtenir%20un%20devis%20personnalisé." class="contact-btn">
+                        <i class="fas fa-envelope"></i> Devis par email
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section" id="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card animate">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Support Technique</h3>
+                    <p>Assistance technique complète pour tous vos équipements et logiciels, disponible 24/7 selon vos besoins.</p>
+                </div>
+                <div class="service-card animate delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Maintenance Préventive</h3>
+                    <p>Surveillance proactive de votre infrastructure pour prévenir les pannes et optimiser les performances.</p>
+                </div>
+                <div class="service-card animate delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Sécurité Informatique</h3>
+                    <p>Protection de vos données et de votre réseau contre les cybermenaces avec des solutions adaptées.</p>
+                </div>
+                <div class="service-card animate delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Infogérance Externalisée</h3>
+                    <p>Externalisez la gestion de votre infrastructure informatique et concentrez-vous sur votre cœur de métier.</p>
+                </div>
+                <div class="service-card animate delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Assistance à Distance</h3>
+                    <p>Résolution rapide de problèmes sans délai de déplacement, grâce à nos outils d'accès à distance sécurisés.</p>
+                </div>
+                <div class="service-card animate delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-desktop"></i>
+                    </div>
+                    <h3>Intervention sur Site</h3>
+                    <p>Déplacement de nos techniciens dans tout le Maroc pour les problèmes nécessitant une intervention physique.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Pourquoi choisir EBH Technologies ?</h2>
+                <p>Forte de plusieurs années d'expérience, EBH Technologies s'est imposée comme un acteur majeur du support informatique pour les professionnels au Maroc.</p>
+                <p>Notre approche combine expertise technique et compréhension des enjeux business pour vous offrir un service sur mesure, adapté à vos contraintes và objectifs.</p>
+                <p>Quelle que soit la taille de votre structure ou votre niveau technique, notre équipe d'experts vous accompagne de A à Z pour garantir la performance et la sécurité de votre infrastructure informatique.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta section" id="contact">
+        <div class="container">
+            <h2>Prêt à optimiser votre infrastructure IT ?</h2>
+            <p>Contactez-nous dès aujourd'hui pour une évaluation gratuite de vos besoins et découvrez comment notre support illimité peut transformer votre expérience informatique.</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/212708908907?text=Bonjour,%20je%20suis%20intéressé%20par%20vos%20services" class="btn btn-light whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+                <a href="tel:0708908907" class="btn btn-light">
+                    <i class="fas fa-phone"></i> 0708908907
+                </a>
+                <a href="mailto:contact@ebh.ma" class="btn btn-light">
+                    <i class="fas fa-envelope"></i> contact@ebh.ma
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 EBH Technologies. Tous droits réservés.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>EBH Technologies</h3>
+                    <p>Votre partenaire informatique de confiance au Maroc</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Nos services</h3>
+                    <a href="#">Support technique</a>
+                    <a href="#">Maintenance</a>
+                    <a href="#">Sécurité informatique</a>
+                    <a href="#">Infogérance externalisée</a>
+                    <a href="#">Assistance à distance</a>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <a href="tel:0708908907"><i class="fas fa-phone"></i> 0708908907</a>
+                    <a href="https://wa.me/212708908907" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                    <a href="mailto:contact@ebh.ma"><i class="fas fa-envelope"></i> contact@ebh.ma</a>
+                    <p>Disponible dans tout le Maroc</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EBH Technologies. Tous droits réservés.</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Animation au défilement
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animate');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                observer.observe(element);
+            });
+
+            // Menu mobile
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav ul');
+
+            menuBtn.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html>
