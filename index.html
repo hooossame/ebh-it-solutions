@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EBH | EL BOUCHIKHI Houssame </title>
+    <title>EBH | Houssame El Bouchikhi | 2025 Portfolio</title>
     <meta name="description" content="Portfolio expérimental de Houssame El Bouchikhi (EBH). Une exploration du design cinétique, de la stratégie et de la technologie.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,11 +13,12 @@
     <style>
         :root {
             --bg: #000000;
+            --bg-light: #111111;
             --text: #FFFFFF;
-            --text-muted: #555555;
+            --text-muted: #666666;
             --border: #222222;
+            --accent: #00FF00;
             --font-main: 'Inter', sans-serif;
-            --font-mono: 'Courier New', Courier, monospace;
             --transition: cubic-bezier(0.215, 0.610, 0.355, 1);
         }
 
@@ -51,15 +52,24 @@
             transition: transform 0.2s ease-out;
         }
         .cursor-dot {
-            width: 6px; height: 6px;
+            width: 8px; height: 8px;
             background-color: var(--text);
             border-radius: 50%;
+            transition: transform 0.3s var(--transition);
         }
+        .cursor.grow .cursor-dot {
+            transform: scale(3);
+            background-color: var(--accent);
+        }
+
 
         /* --- Layout & Typography --- */
         .container { width: 90%; max-width: 1440px; margin: 0 auto; }
-        .section { padding: 10vh 0; position: relative; border-bottom: 1px solid var(--border); }
-        h1, h2, h3 { font-weight: 800; line-height: 1; text-transform: uppercase; letter-spacing: -0.05em; }
+        .section { padding: 12vh 0; position: relative; }
+        .section-bordered { border-bottom: 1px solid var(--border); }
+        h1, h2, h3 { font-weight: 800; line-height: 1.1; text-transform: uppercase; letter-spacing: -0.05em; }
+        h2 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 4rem; }
+        a { color: inherit; text-decoration: none; }
 
         /* --- Navigation --- */
         .navbar {
@@ -67,10 +77,19 @@
             padding: 30px 0; z-index: 1000;
         }
         .nav-container { display: flex; justify-content: space-between; align-items: center; }
-        .nav-logo { font-size: 1.5rem; font-weight: 700; text-decoration: none; color: var(--text); }
-        .nav-status { display: flex; align-items: center; gap: 8px; font-weight: 500; }
-        .status-light { width: 8px; height: 8px; background: #00FF00; border-radius: 50%; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .nav-logo { font-size: 1.5rem; font-weight: 700; }
+        .nav-status { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 0.9rem; }
+        .status-light {
+            width: 8px; height: 8px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(0, 255, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+        }
 
         /* --- Hero Section --- */
         #hero {
@@ -85,8 +104,8 @@
             opacity: 0; transition: opacity 1s 0.5s;
         }
 
-        /* --- Vision Section (Horizontal Scroll) --- */
-        #vision { height: 300vh; border: none; }
+        /* --- Vision Section --- */
+        #vision { height: 300vh; border: none; padding: 0; }
         .vision-sticky-container { position: sticky; top: 0; height: 100vh; overflow: hidden; }
         .vision-scroll-panel {
             position: absolute; top: 0; left: 0; height: 100%;
@@ -96,27 +115,29 @@
         }
         .vision-slide {
             width: 100vw; height: 100vh;
-            display: flex; justify-content: center; align-items: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             padding: 0 5%;
         }
-        .vision-intro-text { font-size: clamp(2rem, 5vw, 4rem); max-width: 1000px; }
+        .vision-intro-text { font-size: clamp(2rem, 5vw, 4rem); max-width: 1000px; text-align: center; }
         .vision-grid { display: grid; grid-template-columns: 350px 1fr; gap: 5rem; align-items: center; width: 100%;}
-        .vision-photo { width: 100%; height: 500px; object-fit: cover; filter: grayscale(100%); }
+        .vision-photo { width: 100%; height: 500px; object-fit: cover; filter: grayscale(100%); border-radius: 8px; }
         .vision-details-text { font-size: 1.5rem; font-weight: 400; color: var(--text-muted); }
         .vision-details-text strong { color: var(--text); font-weight: 600; }
 
+        /* Education Slide */
+        .education-container { width: 100%; max-width: 1200px; }
+        .education-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; margin-top: 4rem; text-align: left; }
+        .education-item { padding-top: 1rem; border-top: 1px solid var(--border); }
+        .education-item strong { display: block; font-size: 1.2rem; font-weight: 600; color: var(--text); }
+        .education-item span { font-size: 1rem; color: var(--text-muted); }
+
         /* --- Ventures Section --- */
-        #ventures {
-            background-image: var(--active-venture-bg, none);
-            background-size: cover; background-position: center;
-            transition: background-image 0.8s var(--transition);
-        }
-        .ventures-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; }
+        #ventures { transition: background-image 0.8s var(--transition); }
+        .ventures-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: flex-start; }
         .ventures-list { list-style: none; }
         .venture-item {
             font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 800; letter-spacing: -0.05em;
-            padding: 1rem 0;
+            font-weight: 800; letter-spacing: -0.05em; padding: 1rem 0;
             color: var(--text-muted);
             border-bottom: 1px solid var(--border);
             cursor: pointer;
@@ -124,83 +145,78 @@
         }
         .venture-item:hover, .venture-item.active { color: var(--text); }
         .venture-display {
-            position: sticky; top: 20vh; height: 60vh;
+            position: sticky; top: 25vh; height: auto;
             opacity: 0; transition: opacity 0.6s var(--transition);
         }
         .venture-display.visible { opacity: 1; }
-        .venture-display h3 { font-size: 2rem; }
-        .venture-display p { font-size: 1.1rem; color: var(--text-muted); margin: 1rem 0 2rem 0; }
-        .venture-display .role { display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--border); font-weight: 500; }
+        .venture-display h3 { font-size: 2rem; margin-bottom: 1rem; }
+        .venture-display p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 2rem; line-height: 1.6; }
+        .venture-display .role { display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--border); font-weight: 500; border-radius: 4px; }
 
         /* --- Collaborations Section --- */
         .collaborations-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
         }
         .collaboration-item {
-            font-family: var(--font-mono);
-            font-size: 1.2rem;
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
+            font-size: 1.1rem; font-weight: 500;
+            padding: 2rem; text-align: center;
+            border: 1px solid var(--border);
+            border-radius: 8px;
             color: var(--text-muted);
-            transition: color 0.4s;
+            background-color: transparent;
+            transition: color 0.4s var(--transition), background-color 0.4s var(--transition), border-color 0.4s var(--transition);
         }
-        .collaboration-item:hover { color: var(--text); }
+        .collaboration-item:hover {
+            color: var(--text);
+            background-color: var(--bg-light);
+            border-color: var(--text-muted);
+        }
 
         /* --- Contact Section --- */
         #contact { text-align: center; }
-        #contact h2 { font-size: clamp(3rem, 15vw, 12rem); }
+        #contact h2 { font-size: clamp(3rem, 15vw, 12rem); margin-bottom: 2rem; }
         .contact-link {
             font-size: clamp(1.5rem, 5vw, 4rem);
             color: var(--text-muted);
-            text-decoration: none;
             display: inline-block;
-            margin-top: 2rem;
-            transition: color 0.4s;
+            transition: color 0.4s var(--transition);
         }
         .contact-link:hover { color: var(--text); }
 
-        /* --- NEW FOOTER --- */
-        .site-footer { padding: 0; }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        /* --- Footer --- */
+        .site-footer {
+            padding: 50px 0;
             border-top: 1px solid var(--border);
         }
-        .footer-block {
-            padding: 2.5rem;
-            border-right: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+        .footer-content {
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.9rem; color: var(--text-muted);
         }
-        .footer-block:nth-child(2n) { border-right: none; }
-        .footer-block:nth-child(3), .footer-block:nth-child(4) { border-bottom: none; }
-        .footer-block h4 {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--text-muted);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-        }
-        .footer-block p, .footer-block a {
-            font-size: 1.2rem;
-            font-weight: 500;
-            color: var(--text);
-            text-decoration: none;
-        }
-        .footer-block a { transition: color 0.4s; }
-        .footer-block a:hover { color: var(--text-muted); }
-        .footer-block .mono { font-family: var(--font-mono); }
+        .footer-content span, .footer-content a { font-weight: 500; }
+        .footer-links a { margin-left: 2rem; transition: color 0.4s var(--transition); }
+        .footer-links a:hover { color: var(--text); }
 
         /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
+            body { cursor: auto; }
+            .cursor { display: none; }
+            h2 { margin-bottom: 2rem; }
+            #vision { height: auto; }
+            .vision-sticky-container, .vision-scroll-panel { position: relative; width: 100%; height: auto; display: block; }
+            .vision-slide { width: 100%; min-height: 80vh; padding: 10vh 5%; }
+            .vision-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .vision-photo { height: 350px; }
+            .education-list { grid-template-columns: 1fr; }
             .ventures-container { grid-template-columns: 1fr; }
-            .venture-display { position: relative; top: 0; margin-top: 2rem; height: auto; }
-            .collaborations-grid { grid-template-columns: repeat(2, 1fr); }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-block { border-right: none !important; }
-            .footer-block:nth-child(3) { border-bottom: 1px solid var(--border); }
+            .venture-display { position: relative; top: 0; margin-top: 2rem; }
+            .collaborations-grid { grid-template-columns: 1fr; }
+            .footer-content { flex-direction: column; gap: 1.5rem; text-align: center; }
+            .footer-links a { margin: 0 1rem; }
         }
 
-        /* --- Reveal Animation --- */
+        /* --- Utility Classes --- */
         .reveal { opacity: 0; transform: translateY(50px); transition: opacity 1s, transform 1s; transition-timing-function: var(--transition); }
         .reveal.visible { opacity: 1; transform: translateY(0); }
     </style>
@@ -221,7 +237,7 @@
     </nav>
 
     <main>
-        <section id="hero">
+        <section id="hero" class="section-bordered">
             <div class="container">
                 <h1 class="hero-title">
                     <div class="hero-line"><span class="word">Architecte</span></div>
@@ -245,19 +261,28 @@
                         </div>
                     </div>
                     <div class="vision-slide">
-                        <h2 class="vision-intro-text">Mon parcours est le fondement de cette approche intégrée.</h2>
+                        <div class="education-container">
+                             <h2 class="vision-intro-text">Un parcours académique intégré.</h2>
+                             <ul class="education-list">
+                                 <li class="education-item"><strong>Ingénieur d'État - Cybersécurité & IA</strong><span>INSA Paris</span></li>
+                                 <li class="education-item"><strong>Executive MBA - Management Stratégique</strong><span>Université Internationale de Rabat</span></li>
+                                 <li class="education-item"><strong>Licence Pro - Génie Informatique</strong><span>Université Internationale de Rabat</span></li>
+                                 <li class="education-item"><strong>DTS - Infrastructure & Sécurité</strong><span>OFPPT</span></li>
+                                 <li class="education-item"><strong>DEUG - Mathématiques & Informatique</strong><span>Faculté des Sciences, Meknès</span></li>
+                             </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="ventures" class="section">
+        <section id="ventures" class="section section-bordered">
             <div class="container reveal">
                 <div class="ventures-container">
                     <ul class="ventures-list">
                         <li class="venture-item active" data-venture="ebhtech">EBH</li>
-                        <li class="venture-item" data-venture="bepay">bePay</li>
-                        <li class="venture-item" data-venture="darkin">Darkin</li>
+                        <li class="venture-item" data-venture="bepay">BEPAY</li>
+                        <li class="venture-item" data-venture="darkin">DARKIN</li>
                         <li class="venture-item" data-venture="morotrust">MOROTRUST</li>
                         <li class="venture-item" data-venture="unigo">UNIGO</li>
                     </ul>
@@ -266,7 +291,7 @@
             </div>
         </section>
 
-        <section id="collaborations" class="section">
+        <section id="collaborations" class="section section-bordered">
             <div class="container reveal">
                 <h2>Impact & Partenariats Stratégiques</h2>
                 <div class="collaborations-grid">
@@ -275,13 +300,16 @@
                     <div class="collaboration-item">Féd. Royale Football</div>
                     <div class="collaboration-item">Maroc Telecom</div>
                     <div class="collaboration-item">Orange Maroc</div>
-                    <div class="collaboration-item">Cisco </div>
+                    <div class="collaboration-item">Inwi</div>
+                    <div class="collaboration-item">Cisco Systems</div>
                     <div class="collaboration-item">Fortinet</div>
                     <div class="collaboration-item">Hewlett-Packard</div>
+                    <div class="collaboration-item">HPS</div>
+                    <div class="collaboration-item">UM6P</div>
+                    <div class="collaboration-item">UIR</div>
                     <div class="collaboration-item">Sobrus</div>
                     <div class="collaboration-item">ESDATA</div>
-                    <div class="collaboration-item">[+ 33 Projets Confidentiels]</div>
-                    <div class="collaboration-item"></div>
+                    <div class="collaboration-item">[+ Projets Confidentiels]</div>
                 </div>
             </div>
         </section>
@@ -294,27 +322,14 @@
         </section>
     </main>
 
-    <footer class="site-footer section">
+    <footer class="site-footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-block">
-                    <h4>Version</h4>
-                    <p class="mono">2025 © EBH Technologies</p>
-                </div>
-                <div class="footer-block">
-                    <h4>Heure Locale</h4>
-                    <p class="mono" id="local-time">--:--:-- (Rabat, MA)</p>
-                </div>
-                <div class="footer-block">
-                    <h4>Social</h4>
-                    <p>
-                        <a href="https://www.linkedin.com/in/eb-h/" target="_blank" rel="noopener noreferrer">LinkedIn</a> /
-                        <a href="https://wa.me/212708908907" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-                    </p>
-                </div>
-                <div class="footer-block">
-                    <h4>Crédits</h4>
-                    <p>Conçu & Développé par Houssame El Bouchikhi</p>
+            <div class="footer-content">
+                <span>© 2025 EBH Technologies</span>
+                <span>Conçu & développé avec précision.</span>
+                <div class="footer-links">
+                     <a href="https://www.linkedin.com/in/eb-h/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                     <a href="https://wa.me/212708908907" target="_blank" rel="noopener noreferrer">WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -330,78 +345,101 @@
             unigo: { title: "UNIGO", desc: "Application de covoiturage universitaire que j'ai développée seul, de la base de données à l'interface, pour résoudre un problème communautaire.", role: "Créateur & Développeur" }
         };
 
-        // --- Loader ---
-        const loader = document.querySelector('.loader');
-        window.addEventListener('load', () => {
-            document.body.style.cursor = 'auto';
-            loader.classList.add('hidden');
-            const heroWords = document.querySelectorAll('.hero-line .word');
-            heroWords.forEach((word, index) => {
-                setTimeout(() => { word.style.transform = 'translateY(0)'; }, index * 150);
+        const isDesktop = window.matchMedia("(min-width: 769px)").matches;
+
+        // --- 1. Loader Animation ---
+        function initLoader() {
+            const loader = document.querySelector('.loader');
+            window.addEventListener('load', () => {
+                loader.classList.add('hidden');
+                document.querySelectorAll('.hero-line .word').forEach((word, index) => {
+                    setTimeout(() => { word.style.transform = 'translateY(0)'; }, index * 150);
+                });
+                document.querySelector('.hero-subtitle').style.opacity = 1;
             });
-            document.querySelector('.hero-subtitle').style.opacity = 1;
-        });
-
-        // --- Custom Cursor ---
-        const cursor = document.querySelector('.cursor');
-        window.addEventListener('mousemove', e => {
-            cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
-        });
-
-        // --- Horizontal Scroll ---
-        const visionSection = document.querySelector('#vision');
-        const scrollPanel = document.querySelector('.vision-scroll-panel');
-        window.addEventListener('scroll', () => {
-            const scrollableDistance = visionSection.offsetHeight - window.innerHeight;
-            if (window.scrollY >= visionSection.offsetTop && window.scrollY <= visionSection.offsetTop + scrollableDistance) {
-                const progress = (window.scrollY - visionSection.offsetTop) / scrollableDistance;
-                scrollPanel.style.transform = `translateX(-${progress * (scrollPanel.offsetWidth - window.innerWidth)}px)`;
-            }
-        });
-
-        // --- Ventures Interaction ---
-        const ventureItems = document.querySelectorAll('.venture-item');
-        const ventureDisplay = document.querySelector('.venture-display');
-
-        function updateVentureDisplay(key) {
-            const data = ventureData[key];
-            ventureDisplay.innerHTML = `
-                <h3>${data.title}</h3>
-                <p>${data.desc}</p>
-                <span class="role">${data.role}</span>
-            `;
         }
 
-        ventureItems.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                ventureItems.forEach(i => i.classList.remove('active'));
-                item.classList.add('active');
-                const ventureKey = item.dataset.venture;
-                updateVentureDisplay(ventureKey);
-                ventureDisplay.classList.add('visible');
+        // --- 2. Custom Cursor Logic ---
+        function initCursor() {
+            if (!isDesktop) return;
+
+            const cursor = document.querySelector('.cursor');
+            const interactiveElements = document.querySelectorAll('a, .venture-item, .collaboration-item');
+
+            window.addEventListener('mousemove', e => {
+                cursor.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0)`;
             });
-        });
-        updateVentureDisplay('ebhtech');
 
-        // --- Live Clock in Footer ---
-        const timeElement = document.getElementById('local-time');
-        function updateTime() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString('en-GB', { timeZone: 'Africa/Casablanca', hour: '2-digit', minute: '2-digit', second: '2-digit' });
-            timeElement.textContent = `${timeString} (Rabat, MA)`;
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('grow'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('grow'));
+            });
         }
-        updateTime();
-        setInterval(updateTime, 1000);
 
-        // --- Scroll Animations ---
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+        // --- 3. Horizontal Scroll for Vision Section ---
+        function initHorizontalScroll() {
+            if (!isDesktop) return;
+
+            const visionSection = document.querySelector('#vision');
+            const scrollPanel = document.querySelector('.vision-scroll-panel');
+
+            window.addEventListener('scroll', () => {
+                const scrollableDistance = visionSection.offsetHeight - window.innerHeight;
+                if (window.scrollY >= visionSection.offsetTop && window.scrollY <= visionSection.offsetTop + scrollableDistance) {
+                    const progress = (window.scrollY - visionSection.offsetTop) / scrollableDistance;
+                    const transformX = -progress * (scrollPanel.offsetWidth - window.innerWidth);
+                    scrollPanel.style.transform = `translateX(${transformX}px)`;
                 }
             });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        // --- 4. Ventures Interaction ---
+        function initVentures() {
+            const ventureItems = document.querySelectorAll('.venture-item');
+            const ventureDisplay = document.querySelector('.venture-display');
+
+            function updateVentureDisplay(key) {
+                const data = ventureData[key];
+                if (!data) return;
+                ventureDisplay.innerHTML = `
+                    <h3>${data.title}</h3>
+                    <p>${data.desc}</p>
+                    <span class="role">${data.role}</span>
+                `;
+            }
+
+            ventureItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    ventureItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                    updateVentureDisplay(item.dataset.venture);
+                    ventureDisplay.classList.add('visible');
+                });
+            });
+
+            // Initial setup
+            updateVentureDisplay('ebhtech');
+            setTimeout(() => ventureDisplay.classList.add('visible'), 800);
+        }
+
+        // --- 5. General Scroll Animations ---
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        // --- Initialize all functions ---
+        initLoader();
+        initCursor();
+        initHorizontalScroll();
+        initVentures();
+        initScrollAnimations();
     });
     </script>
 </body>
